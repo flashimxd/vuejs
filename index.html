@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue JS</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.css">
+</head>
+<body>  
+    
+    <div class="container" id="beerApp">
+        <h1>VUE JS interaction table moda foca!</h1>
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Nome de usuário</th>
+                    <th>Email</th>
+                    <th>Cidade</th>
+                    <th>Rua</th>
+                    <th width="1%" nowrap>
+                        <a href="#"><i class="fa fa-plus-square"></i></a>
+                    </th>
+                </tr>
+
+            </thead>
+            <tbody v-for="user in users">
+
+                <tr>
+                
+                    <td>{{user.name}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.address.city}}</td>
+                    <td>{{user.address.street}}</td>
+                    <td>
+                        <a href="#" v-on:click="doOpenDetails($event, user.id)"><i class="fa fa-plus-square"></i></a>
+                    </td>
+                </tr>
+                <tr v-show="openDetails.indexOf(user.id) > -1">
+                    <td colspan="6">{{user.website}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/node_modules/vue/dist/vue.js"></script>
+    <script src="/node_modules/vue-resource/dist/vue-resource.js"></script>
+    <script src="app.js"></script>
+    
+</body>
+</html>
